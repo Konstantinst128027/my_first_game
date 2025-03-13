@@ -1,0 +1,1 @@
+My testing plan is to test all the individual functions and all their possible cases. That is, check the functions for the fact that there are no ambiguities. There are also tests where several functions interact together.

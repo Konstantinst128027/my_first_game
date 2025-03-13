@@ -1,0 +1,51 @@
+Full Description:
+1. Main classes
+Game:
+Controls the entire game, including the choice of mode (playing against the player or AI) and the execution of gameplay.
+Depends on the classes Move, Deck, Player and II.
+Move:
+Responsible for processing the players' moves.
+Depends on Deck, Hand, and Player.
+Deck:
+Manages a deck of cards, including filling, shuffling, and restoring.
+Contains a set of cards (Card).
+Player:
+Represents the player, controls his health, mana, and name.
+Has one hand, which contains many cards.
+II:
+Implements the logic of the game against AI.
+Depends on Deck, Hand, and Player.
+Hand:
+Controls the cards in the player's hand.
+Contains a set of cards (Card).
+Card:
+The base class for all maps.
+It has the Additional_Card and Game_Card subclasses.
+2. Card inheritance
+Additional_Card:
+Inherited from Card.
+Includes subclasses:
+Swap_My_Card: a card for exchanging cards.
+Card_Broken_Deck: A card for discarding cards into a broken deck.
+Manna_Card: A card for increasing mana.
+Game_Card:
+Inherited from Card.
+Includes subclasses:
+Knight, Magician, Thief: characters.
+Healing_Spell, Healer: maps for treatment.
+Berserker, Attacking_Spell, Archer: attack cards.
+3. The many-to-one relationship
+Deck "1" --> "many" Card:
+One deck contains many cards.
+Player "1" --> "1" Hand:
+One player has one hand.
+Hand "1" --> "many" Card:
+One hand contains many cards.
+Game "1" --> "many" Player:
+One game controls many players.
+Game "1" --> "1" II:
+One game controls one AI.
+Game "1" --> "1" Move:
+One game controls one turn object.
+Game "1" --> "1" Deck:
+One game controls one deck.

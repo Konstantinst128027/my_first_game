@@ -1,0 +1,19 @@
+Diagram Description:
+Game Mode:
+Controls the game modes: Player vs Player (PvP) and Player vs AI (PvAI).
+Interacts with the Deck and Player components.
+Deck:
+It contains two types of cards: Game Cards and Extra Cards.
+Uses the Card component to represent maps.
+Player:
+Controls the Hand component (the player's hand).
+Interacts with Deck to receive cards.
+Hand:
+Uses the Card component to store the cards that are in the player's hand.
+Card:
+It represents cards that can be either game cards (Game Card) or additional cards (Extra Card).
+How it works:
+The Game Mode component controls the selection of the game mode (PvP or PvAI) and interacts with Deck and Player.
+The Deck contains the cards and provides them to the players.
+The player controls his Hand, which contains the cards received from the Deck.
+All cards (Game Card and Extra Card) are part of the Card component.
