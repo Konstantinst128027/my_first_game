@@ -9,7 +9,7 @@ I created my first custom game and also set up the CI
 make main
 ##Build tests
 make tests 
-#Run main
+##Run main
 ./main
-#Run tests
+##Run tests
 ./tests
