@@ -1,2 +1,0 @@
-a description of the system requirements and usage scenarios that does not allow ambiguity:
-To start the game, you must first enter in the terminal: make main and then ./main. The game will start and you will first have to choose whether to play or not. After you choose to play, you will have to choose the game mode. After that, you have to choose whose move will be the first and after that the game itself starts. After the game ends, you will have to choose whether to play again or not. If you select "No", the game ends.
