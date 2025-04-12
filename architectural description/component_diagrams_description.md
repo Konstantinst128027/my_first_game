@@ -4,7 +4,7 @@
 
 ### Game Class
 - **Controls**: Entire game flow including mode selection (PvP/PvE) and gameplay execution
-- **Dependencies**: Move, Deck, Player, and II classes
+- **Dependencies**: Move, Deck, Player, and AI classes
 
 ### Move Class
 - **Responsible**: For processing player moves
@@ -18,7 +18,7 @@
 - **Represents**: Game player with health, mana, and name attributes
 - **Has**: Single Hand instance containing multiple cards
 
-### II Class (AI)
+### AI Class (AI)
 - **Implements**: Artificial intelligence logic for computer opponents
 - **Dependencies**: Deck, Hand, and Player classes
 

@@ -3,7 +3,7 @@
 #include "game.h"
 
 Game::Game() {}
-//this function returns true if the play against player mode is selected, returns false if the play against II mode is selected, and returns an empty value if the input is incorrect.
+//this function returns true if the play against player mode is selected, returns false if the play against AI mode is selected, and returns an empty value if the input is incorrect.
 std::optional<bool> Game::Choosing_Mode(std::string& input)
 {
     int mode;
@@ -45,7 +45,7 @@ std::optional<bool> Game::Choosing_Mode(std::string& input)
 void Game::Gaming()
 {
 
-    std::cout << "Select the mode: 1. Playing against the player. 2. Playing against the II." << std::endl;
+    std::cout << "Select the mode: 1. Playing against the player. 2. Playing against the AI." << std::endl;
     std::optional<bool> mode;
     while (!mode.has_value())
     {
@@ -61,11 +61,11 @@ void Game::Gaming()
     }
     else
     {
-        Game_Vs_II();
+        Game_Vs_AI();
     }
 }
 //This is a feature that replays the game against AI.
-void Game::Game_Vs_II()
+void Game::Game_Vs_AI()
 {
     std::cout << "Enter the Name: ";
     std::string Name_1;
@@ -74,10 +74,10 @@ void Game::Game_Vs_II()
     int Manna_1 = player_1.Get_Manna();
     int Health_1 = player_1.Get_Health();
 
-    std::string Name_II = "II";
-    Player player_II(Name_II);
-    int Manna_II = player_II.Get_Manna();
-    int Health_II = player_II.Get_Health();
+    std::string Name_AI = "AI";
+    Player player_AI(Name_AI);
+    int Manna_AI = player_AI.Get_Manna();
+    int Health_AI = player_AI.Get_Health();
 
     Deck deck;
     std::vector<std::unique_ptr<Card>> The_Deck;
@@ -89,35 +89,35 @@ void Game::Game_Vs_II()
     std::vector <std::unique_ptr<Card>> Hand_Player_1;
     hand.Refilling_Hand(Name_1, Hand_Player_1, The_Deck, Broken_Deck);
 
-    std::vector <std::unique_ptr<Card>> Hand_II;
-    hand.Refilling_Hand(Name_II, Hand_II, The_Deck, Broken_Deck);
+    std::vector <std::unique_ptr<Card>> Hand_AI;
+    hand.Refilling_Hand(Name_AI, Hand_AI, The_Deck, Broken_Deck);
 
     Move move;
 
     std::optional<bool> Who_Is_Walking;
 
     std::cout << "choose who walks: ";
-    std::cout << "1. Player " << Name_1 << " " << "2. Player " << Name_II << " " << "3. selected randomly" << std::endl;
+    std::cout << "1. Player " << Name_1 << " " << "2. Player " << Name_AI << " " << "3. selected randomly" << std::endl;
     while (!Who_Is_Walking.has_value())
     {
         std::cout << "Enter the number: ";
         std::string input;
         std::cin >> input;
-        Who_Is_Walking = move.The_Choosing_Move(input, Name_1, Name_II);
+        Who_Is_Walking = move.The_Choosing_Move(input, Name_1, Name_AI);
     }
-    II ii;
+    AI ai;
 
     std::string situation = "all_right";
 
-    while (situation != ("Player " + Name_1 + " win!") and situation != ("Player " + Name_II + " win!"))
+    while (situation != ("Player " + Name_1 + " win!") and situation != ("Player " + Name_AI + " win!"))
     {
         if (Who_Is_Walking == true)
         {
-            situation = move.Making_Move(Name_1, Manna_1, Health_1, Hand_Player_1, Name_II, Health_II, Hand_II, Broken_Deck);
-            if (situation != ("Player " + Name_1 + " win!") and situation != ("Player " + Name_II + " win!"))
+            situation = move.Making_Move(Name_1, Manna_1, Health_1, Hand_Player_1, Name_AI, Health_AI, Hand_AI, Broken_Deck);
+            if (situation != ("Player " + Name_1 + " win!") and situation != ("Player " + Name_AI + " win!"))
             {
                 hand.Refilling_Hand(Name_1, Hand_Player_1, The_Deck, Broken_Deck);
-                hand.Refilling_Hand(Name_II, Hand_II, The_Deck, Broken_Deck);
+                hand.Refilling_Hand(Name_AI, Hand_AI, The_Deck, Broken_Deck);
                 Who_Is_Walking = false;
             }
             else
@@ -128,10 +128,10 @@ void Game::Game_Vs_II()
         }
         else
         {
-            situation = ii.Making_II_Move(Name_II, Manna_II, Health_II, Hand_II, Name_1, Health_1, Hand_Player_1, Broken_Deck);
-            if (situation != ("Player " + Name_1 + " win!") and situation != ("Player " + Name_II + " win!"))
+            situation = ai.Making_AI_Move(Name_AI, Manna_AI, Health_AI, Hand_AI, Name_1, Health_1, Hand_Player_1, Broken_Deck);
+            if (situation != ("Player " + Name_1 + " win!") and situation != ("Player " + Name_AI + " win!"))
             {
-                hand.Refilling_Hand(Name_II, Hand_II, The_Deck, Broken_Deck);
+                hand.Refilling_Hand(Name_AI, Hand_AI, The_Deck, Broken_Deck);
                 hand.Refilling_Hand(Name_1, Hand_Player_1, The_Deck, Broken_Deck);
                 Who_Is_Walking = true;
             }

@@ -4,7 +4,7 @@
 
 ### `Game` 
 - **Controls**: Entire game flow, mode selection (PvP/PvE)  
-- **Dependencies**: `Move`, `Deck`, `Player`, `II`  
+- **Dependencies**: `Move`, `Deck`, `Player`, `AI`  
 
 ### `Move`
 - **Handles**: Player moves processing  
@@ -18,7 +18,7 @@
 - **Manages**: Health, mana, player name  
 - **Has**: Single `Hand` object  
 
-### `II` (AI)
+### `AI` (AI)
 - **Implements**: Computer opponent logic
 - **Dependencies**: `Deck`, `Hand`, `Player`
 

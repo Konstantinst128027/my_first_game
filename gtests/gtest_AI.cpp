@@ -1,9 +1,9 @@
 /* Berezkin Konstantin Evgenievich
 ./main st128027@student.spbu.ru*/
 #include <gtest/gtest.h>
-#include "II.h"
+#include "AI.h"
 #include "player.h"
-TEST(Choosing_Healing_Card, II_Test)
+TEST(Choosing_Healing_Card, AI_Test)
 {
 
     std::vector <std::unique_ptr <Card>> My_Hand;
@@ -15,12 +15,12 @@ TEST(Choosing_Healing_Card, II_Test)
     My_Hand.push_back(std::make_unique<Healer>());//4 (index)
     My_Hand.push_back(std::make_unique<Attacking_Spell>());//5 (index)
 
-    II ii;
+    AI ai;
     std::vector <size_t> result = {4, 3};
-    EXPECT_EQ(ii.Choosing_Healing_Card(My_Hand), result);
+    EXPECT_EQ(ai.Choosing_Healing_Card(My_Hand), result);
 }
 
-TEST(Choosing_Damage_Card, II_Test)
+TEST(Choosing_Damage_Card, AI_Test)
 {
 
     std::vector <std::unique_ptr <Card>> My_Hand;
@@ -32,12 +32,12 @@ TEST(Choosing_Damage_Card, II_Test)
     My_Hand.push_back(std::make_unique<Healer>());//4 (index)
     My_Hand.push_back(std::make_unique<Attacking_Spell>());//5 (index)
 
-    II ii;
+    AI ai;
     std::vector <size_t> result = {5, 4};
-    EXPECT_EQ(ii.Choosing_Damage_Card(My_Hand), result);
+    EXPECT_EQ(ai.Choosing_Damage_Card(My_Hand), result);
 }
 
-TEST(Choosing_Manna_Card, II_Test)
+TEST(Choosing_Manna_Card, AI_Test)
 {
 
     std::vector <std::unique_ptr <Card>> My_Hand;
@@ -49,12 +49,12 @@ TEST(Choosing_Manna_Card, II_Test)
     My_Hand.push_back(std::make_unique<Healer>());//4 (index)
     My_Hand.push_back(std::make_unique<Attacking_Spell>());//5 (index)
 
-    II ii;
+    AI ai;
     std::vector <size_t> result = {0};
-    EXPECT_EQ(ii.Choosing_Manna_Card(My_Hand), result);
+    EXPECT_EQ(ai.Choosing_Manna_Card(My_Hand), result);
 }
 
-TEST(Choosing_Additional_Card, II_Test)
+TEST(Choosing_Additional_Card, AI_Test)
 {
 
     std::vector <std::unique_ptr <Card>> My_Hand;
@@ -66,12 +66,12 @@ TEST(Choosing_Additional_Card, II_Test)
     My_Hand.push_back(std::make_unique<Healer>());//4 (index)
     My_Hand.push_back(std::make_unique<Attacking_Spell>());//5 (index)
 
-    II ii;
+    AI ai;
     std::vector <size_t> result = {1, 2};
-    EXPECT_EQ(ii.Choosing_Additional_Card(My_Hand), result);
+    EXPECT_EQ(ai.Choosing_Additional_Card(My_Hand), result);
 }
 
-TEST(The_Swap_My_Card_II, II_Test_1)
+TEST(The_Swap_My_Card_AI, AI_Test_1)
 {
 
     std::vector <std::unique_ptr <Card>> Opponent_Hand;
@@ -83,17 +83,17 @@ TEST(The_Swap_My_Card_II, II_Test_1)
     Opponent_Hand.push_back(std::make_unique<Healer>());//4 (index)
     Opponent_Hand.push_back(std::make_unique<Attacking_Spell>());//5 (index)
 
-    Player player("II");
+    Player player("AI");
     int Health_1 = player.Get_Health();
 
-    II ii;
+    AI ai;
     std::vector <std::unique_ptr <Card>> My_Hand;
-    std::vector <size_t> HealingCards = ii.Choosing_Healing_Card(My_Hand);
-    std::vector <size_t> DamageCards =  ii.Choosing_Damage_Card(My_Hand);
-    std::vector <size_t> MannaCards = ii.Choosing_Manna_Card(My_Hand);
-    std::vector <size_t> AdditionalCards = ii.Choosing_Additional_Card(My_Hand);
+    std::vector <size_t> HealingCards = ai.Choosing_Healing_Card(My_Hand);
+    std::vector <size_t> DamageCards =  ai.Choosing_Damage_Card(My_Hand);
+    std::vector <size_t> MannaCards = ai.Choosing_Manna_Card(My_Hand);
+    std::vector <size_t> AdditionalCards = ai.Choosing_Additional_Card(My_Hand);
 
-    ii.The_Swap_My_Card_II(My_Hand, Opponent_Hand, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
+    ai.The_Swap_My_Card_AI(My_Hand, Opponent_Hand, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
 
     std::vector <size_t> result = {0};
 
@@ -104,7 +104,7 @@ TEST(The_Swap_My_Card_II, II_Test_1)
 
 }
 
-TEST(The_Swap_My_Card_II, II_Test_2)
+TEST(The_Swap_My_Card_AI, AI_Test_2)
 {
 
     std::vector <std::unique_ptr <Card>> Opponent_Hand;
@@ -115,17 +115,17 @@ TEST(The_Swap_My_Card_II, II_Test_2)
     Opponent_Hand.push_back(std::make_unique<Healer>());//3 (index)
     Opponent_Hand.push_back(std::make_unique<Attacking_Spell>());//4 (index)
 
-    Player player("II");
+    Player player("AI");
     int Health_1 = player.Get_Health();
 
-    II ii;
+    AI ai;
     std::vector <std::unique_ptr <Card>> My_Hand;
-    std::vector <size_t> HealingCards = ii.Choosing_Healing_Card(My_Hand);
-    std::vector <size_t> DamageCards =  ii.Choosing_Damage_Card(My_Hand);
-    std::vector <size_t> MannaCards = ii.Choosing_Manna_Card(My_Hand);
-    std::vector <size_t> AdditionalCards = ii.Choosing_Additional_Card(My_Hand);
+    std::vector <size_t> HealingCards = ai.Choosing_Healing_Card(My_Hand);
+    std::vector <size_t> DamageCards =  ai.Choosing_Damage_Card(My_Hand);
+    std::vector <size_t> MannaCards = ai.Choosing_Manna_Card(My_Hand);
+    std::vector <size_t> AdditionalCards = ai.Choosing_Additional_Card(My_Hand);
 
-    ii.The_Swap_My_Card_II(My_Hand, Opponent_Hand, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
+    ai.The_Swap_My_Card_AI(My_Hand, Opponent_Hand, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
 
     std::vector <size_t> result = {0};
 
@@ -136,7 +136,7 @@ TEST(The_Swap_My_Card_II, II_Test_2)
 
 }
 
-TEST(The_Swap_My_Card_II, II_Test_3)
+TEST(The_Swap_My_Card_AI, AI_Test_3)
 {
 
     std::vector <std::unique_ptr <Card>> Opponent_Hand;
@@ -145,17 +145,17 @@ TEST(The_Swap_My_Card_II, II_Test_3)
     Opponent_Hand.push_back(std::make_unique<Card_Broken_Deck>());//1 (index)
     Opponent_Hand.push_back(std::make_unique<Healing_Spell>());//2 (index)
 
-    Player player("II");
+    Player player("AI");
     int Health_1 = player.Get_Health();
 
-    II ii;
+    AI ai;
     std::vector <std::unique_ptr <Card>> My_Hand;
-    std::vector <size_t> HealingCards = ii.Choosing_Healing_Card(My_Hand);
-    std::vector <size_t> DamageCards =  ii.Choosing_Damage_Card(My_Hand);
-    std::vector <size_t> MannaCards = ii.Choosing_Manna_Card(My_Hand);
-    std::vector <size_t> AdditionalCards = ii.Choosing_Additional_Card(My_Hand);
+    std::vector <size_t> HealingCards = ai.Choosing_Healing_Card(My_Hand);
+    std::vector <size_t> DamageCards =  ai.Choosing_Damage_Card(My_Hand);
+    std::vector <size_t> MannaCards = ai.Choosing_Manna_Card(My_Hand);
+    std::vector <size_t> AdditionalCards = ai.Choosing_Additional_Card(My_Hand);
 
-    ii.The_Swap_My_Card_II(My_Hand, Opponent_Hand, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
+    ai.The_Swap_My_Card_AI(My_Hand, Opponent_Hand, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
 
     std::vector <size_t> result = {0};
 
@@ -165,24 +165,24 @@ TEST(The_Swap_My_Card_II, II_Test_3)
     EXPECT_EQ(AdditionalCards, result);
 }
 
-TEST(The_Swap_My_Card_II, II_Test_4)
+TEST(The_Swap_My_Card_AI, AI_Test_4)
 {
 
     std::vector <std::unique_ptr <Card>> Opponent_Hand;
 
     Opponent_Hand.push_back(std::make_unique<Healing_Spell>());//0 (index)
 
-    Player player("II");
+    Player player("AI");
     int Health_1 = player.Get_Health();// > 15
 
-    II ii;
+    AI ai;
     std::vector <std::unique_ptr <Card>> My_Hand;
-    std::vector <size_t> HealingCards = ii.Choosing_Healing_Card(My_Hand);
-    std::vector <size_t> DamageCards =  ii.Choosing_Damage_Card(My_Hand);
-    std::vector <size_t> MannaCards = ii.Choosing_Manna_Card(My_Hand);
-    std::vector <size_t> AdditionalCards = ii.Choosing_Additional_Card(My_Hand);
+    std::vector <size_t> HealingCards = ai.Choosing_Healing_Card(My_Hand);
+    std::vector <size_t> DamageCards =  ai.Choosing_Damage_Card(My_Hand);
+    std::vector <size_t> MannaCards = ai.Choosing_Manna_Card(My_Hand);
+    std::vector <size_t> AdditionalCards = ai.Choosing_Additional_Card(My_Hand);
 
-    ii.The_Swap_My_Card_II(My_Hand, Opponent_Hand, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
+    ai.The_Swap_My_Card_AI(My_Hand, Opponent_Hand, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
 
     std::vector <size_t> result = {0};
 
@@ -192,7 +192,7 @@ TEST(The_Swap_My_Card_II, II_Test_4)
     EXPECT_EQ(HealingCards, result);
 }
 
-TEST(The_Swap_My_Card_II, II_Test_5)
+TEST(The_Swap_My_Card_AI, AI_Test_5)
 {
 
     std::vector <std::unique_ptr <Card>> Opponent_Hand;
@@ -205,14 +205,14 @@ TEST(The_Swap_My_Card_II, II_Test_5)
 
     int Health_1 = 14;
 
-    II ii;
+    AI ai;
     std::vector <std::unique_ptr <Card>> My_Hand;
-    std::vector <size_t> HealingCards = ii.Choosing_Healing_Card(My_Hand);
-    std::vector <size_t> DamageCards =  ii.Choosing_Damage_Card(My_Hand);
-    std::vector <size_t> MannaCards = ii.Choosing_Manna_Card(My_Hand);
-    std::vector <size_t> AdditionalCards = ii.Choosing_Additional_Card(My_Hand);
+    std::vector <size_t> HealingCards = ai.Choosing_Healing_Card(My_Hand);
+    std::vector <size_t> DamageCards =  ai.Choosing_Damage_Card(My_Hand);
+    std::vector <size_t> MannaCards = ai.Choosing_Manna_Card(My_Hand);
+    std::vector <size_t> AdditionalCards = ai.Choosing_Additional_Card(My_Hand);
 
-    ii.The_Swap_My_Card_II(My_Hand, Opponent_Hand, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
+    ai.The_Swap_My_Card_AI(My_Hand, Opponent_Hand, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
 
     std::vector <size_t> result = {0};
 
@@ -222,7 +222,7 @@ TEST(The_Swap_My_Card_II, II_Test_5)
     EXPECT_EQ(HealingCards, result);
 
 }
-TEST(The_Card_Broken_Deck_II, II_Test_1)
+TEST(The_Card_Broken_Deck_AI, AI_Test_1)
 {
 
     std::vector <std::unique_ptr <Card>> Broken_Deck;
@@ -234,17 +234,17 @@ TEST(The_Card_Broken_Deck_II, II_Test_1)
     Broken_Deck.push_back(std::make_unique<Healer>());//4 (index)
     Broken_Deck.push_back(std::make_unique<Attacking_Spell>());//5 (index)
 
-    Player player("II");
+    Player player("AI");
     int Health_1 = player.Get_Health();
 
-    II ii;
+    AI ai;
     std::vector <std::unique_ptr <Card>> My_Hand;
-    std::vector <size_t> HealingCards = ii.Choosing_Healing_Card(My_Hand);
-    std::vector <size_t> DamageCards =  ii.Choosing_Damage_Card(My_Hand);
-    std::vector <size_t> MannaCards = ii.Choosing_Manna_Card(My_Hand);
-    std::vector <size_t> AdditionalCards = ii.Choosing_Additional_Card(My_Hand);
+    std::vector <size_t> HealingCards = ai.Choosing_Healing_Card(My_Hand);
+    std::vector <size_t> DamageCards =  ai.Choosing_Damage_Card(My_Hand);
+    std::vector <size_t> MannaCards = ai.Choosing_Manna_Card(My_Hand);
+    std::vector <size_t> AdditionalCards = ai.Choosing_Additional_Card(My_Hand);
 
-    ii.The_Card_Broken_Deck_II(My_Hand, Broken_Deck, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
+    ai.The_Card_Broken_Deck_AI(My_Hand, Broken_Deck, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
 
     std::vector <size_t> result = {0};
 
@@ -255,7 +255,7 @@ TEST(The_Card_Broken_Deck_II, II_Test_1)
 
 }
 
-TEST(The_Card_Broken_Deck_II, II_Test_2)
+TEST(The_Card_Broken_Deck_AI, AI_Test_2)
 {
 
     std::vector <std::unique_ptr <Card>> Broken_Deck;
@@ -266,17 +266,17 @@ TEST(The_Card_Broken_Deck_II, II_Test_2)
     Broken_Deck.push_back(std::make_unique<Healer>());//3 (index)
     Broken_Deck.push_back(std::make_unique<Attacking_Spell>());//4 (index)
 
-    Player player("II");
+    Player player("AI");
     int Health_1 = player.Get_Health();
 
-    II ii;
+    AI ai;
     std::vector <std::unique_ptr <Card>> My_Hand;
-    std::vector <size_t> HealingCards = ii.Choosing_Healing_Card(My_Hand);
-    std::vector <size_t> DamageCards =  ii.Choosing_Damage_Card(My_Hand);
-    std::vector <size_t> MannaCards = ii.Choosing_Manna_Card(My_Hand);
-    std::vector <size_t> AdditionalCards = ii.Choosing_Additional_Card(My_Hand);
+    std::vector <size_t> HealingCards = ai.Choosing_Healing_Card(My_Hand);
+    std::vector <size_t> DamageCards =  ai.Choosing_Damage_Card(My_Hand);
+    std::vector <size_t> MannaCards = ai.Choosing_Manna_Card(My_Hand);
+    std::vector <size_t> AdditionalCards = ai.Choosing_Additional_Card(My_Hand);
 
-    ii.The_Card_Broken_Deck_II(My_Hand, Broken_Deck, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
+    ai.The_Card_Broken_Deck_AI(My_Hand, Broken_Deck, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
 
     std::vector <size_t> result = {0};
 
@@ -287,7 +287,7 @@ TEST(The_Card_Broken_Deck_II, II_Test_2)
 
 }
 
-TEST(The_Card_Broken_Deck_II, II_Test_3)
+TEST(The_Card_Broken_Deck_AI, AI_Test_3)
 {
 
     std::vector <std::unique_ptr <Card>> Broken_Deck;
@@ -296,17 +296,17 @@ TEST(The_Card_Broken_Deck_II, II_Test_3)
     Broken_Deck.push_back(std::make_unique<Card_Broken_Deck>());//1 (index)
     Broken_Deck.push_back(std::make_unique<Healing_Spell>());//2 (index)
 
-    Player player("II");
+    Player player("AI");
     int Health_1 = player.Get_Health();
 
-    II ii;
+    AI ai;
     std::vector <std::unique_ptr <Card>> My_Hand;
-    std::vector <size_t> HealingCards = ii.Choosing_Healing_Card(My_Hand);
-    std::vector <size_t> DamageCards =  ii.Choosing_Damage_Card(My_Hand);
-    std::vector <size_t> MannaCards = ii.Choosing_Manna_Card(My_Hand);
-    std::vector <size_t> AdditionalCards = ii.Choosing_Additional_Card(My_Hand);
+    std::vector <size_t> HealingCards = ai.Choosing_Healing_Card(My_Hand);
+    std::vector <size_t> DamageCards =  ai.Choosing_Damage_Card(My_Hand);
+    std::vector <size_t> MannaCards = ai.Choosing_Manna_Card(My_Hand);
+    std::vector <size_t> AdditionalCards = ai.Choosing_Additional_Card(My_Hand);
 
-    ii.The_Card_Broken_Deck_II(My_Hand, Broken_Deck, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
+    ai.The_Card_Broken_Deck_AI(My_Hand, Broken_Deck, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
 
     std::vector <size_t> result = {0};
 
@@ -316,24 +316,24 @@ TEST(The_Card_Broken_Deck_II, II_Test_3)
     EXPECT_EQ(AdditionalCards, result);
 }
 
-TEST(The_Card_Broken_Deck_II, II_Test_4)
+TEST(The_Card_Broken_Deck_AI, AI_Test_4)
 {
 
     std::vector <std::unique_ptr <Card>> Broken_Deck;
 
     Broken_Deck.push_back(std::make_unique<Healing_Spell>());//0 (index)
 
-    Player player("II");
+    Player player("AI");
     int Health_1 = player.Get_Health();// > 15
 
-    II ii;
+    AI ai;
     std::vector <std::unique_ptr <Card>> My_Hand;
-    std::vector <size_t> HealingCards = ii.Choosing_Healing_Card(My_Hand);
-    std::vector <size_t> DamageCards =  ii.Choosing_Damage_Card(My_Hand);
-    std::vector <size_t> MannaCards = ii.Choosing_Manna_Card(My_Hand);
-    std::vector <size_t> AdditionalCards = ii.Choosing_Additional_Card(My_Hand);
+    std::vector <size_t> HealingCards = ai.Choosing_Healing_Card(My_Hand);
+    std::vector <size_t> DamageCards =  ai.Choosing_Damage_Card(My_Hand);
+    std::vector <size_t> MannaCards = ai.Choosing_Manna_Card(My_Hand);
+    std::vector <size_t> AdditionalCards = ai.Choosing_Additional_Card(My_Hand);
 
-    ii.The_Card_Broken_Deck_II(My_Hand, Broken_Deck, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
+    ai.The_Card_Broken_Deck_AI(My_Hand, Broken_Deck, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
 
     std::vector <size_t> result = {0};
 
@@ -343,7 +343,7 @@ TEST(The_Card_Broken_Deck_II, II_Test_4)
     EXPECT_EQ(HealingCards, result);
 }
 
-TEST(The_Card_Broken_Deck_II, II_Test_5)
+TEST(The_Card_Broken_Deck_AI, AI_Test_5)
 {
 
     std::vector <std::unique_ptr <Card>> Broken_Deck;
@@ -356,14 +356,14 @@ TEST(The_Card_Broken_Deck_II, II_Test_5)
 
     int Health_1 = 14;
 
-    II ii;
+    AI ai;
     std::vector <std::unique_ptr <Card>> My_Hand;
-    std::vector <size_t> HealingCards = ii.Choosing_Healing_Card(My_Hand);
-    std::vector <size_t> DamageCards =  ii.Choosing_Damage_Card(My_Hand);
-    std::vector <size_t> MannaCards = ii.Choosing_Manna_Card(My_Hand);
-    std::vector <size_t> AdditionalCards = ii.Choosing_Additional_Card(My_Hand);
+    std::vector <size_t> HealingCards = ai.Choosing_Healing_Card(My_Hand);
+    std::vector <size_t> DamageCards =  ai.Choosing_Damage_Card(My_Hand);
+    std::vector <size_t> MannaCards = ai.Choosing_Manna_Card(My_Hand);
+    std::vector <size_t> AdditionalCards = ai.Choosing_Additional_Card(My_Hand);
 
-    ii.The_Card_Broken_Deck_II(My_Hand, Broken_Deck, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
+    ai.The_Card_Broken_Deck_AI(My_Hand, Broken_Deck, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
 
     std::vector <size_t> result = {0};
 
@@ -372,7 +372,7 @@ TEST(The_Card_Broken_Deck_II, II_Test_5)
     EXPECT_EQ(Broken_Deck.size(), 4);
     EXPECT_EQ(HealingCards, result);
 }
-TEST(Corrected_Index, II_Test)
+TEST(Corrected_Index, AI_Test)
 {
 
     std::vector <std::unique_ptr <Card>> Hand;
@@ -384,18 +384,18 @@ TEST(Corrected_Index, II_Test)
     Hand.push_back(std::make_unique<Healer>());//4 (index)
     Hand.push_back(std::make_unique<Attacking_Spell>());//5 (index)
 
-    II ii;
+    AI ai;
 
-    std::vector <size_t> HealingCards = ii.Choosing_Healing_Card(Hand);
-    std::vector <size_t> DamageCards =  ii.Choosing_Damage_Card(Hand);
-    std::vector <size_t> MannaCards = ii.Choosing_Manna_Card(Hand);
-    std::vector <size_t> AdditionalCards = ii.Choosing_Additional_Card(Hand);
+    std::vector <size_t> HealingCards = ai.Choosing_Healing_Card(Hand);
+    std::vector <size_t> DamageCards =  ai.Choosing_Damage_Card(Hand);
+    std::vector <size_t> MannaCards = ai.Choosing_Manna_Card(Hand);
+    std::vector <size_t> AdditionalCards = ai.Choosing_Additional_Card(Hand);
     std::vector <size_t> ThenAdditionalHealingCards;
     std::vector <size_t> ThenAdditionalDamageCards;
     size_t Index_Of_Card = 0;
     Hand.erase(Hand.begin());
     MannaCards.erase(MannaCards.begin());
-    ii.Corrected_Index(HealingCards, DamageCards, MannaCards, AdditionalCards, ThenAdditionalHealingCards, ThenAdditionalDamageCards, Index_Of_Card);
+    ai.Corrected_Index(HealingCards, DamageCards, MannaCards, AdditionalCards, ThenAdditionalHealingCards, ThenAdditionalDamageCards, Index_Of_Card);
 
     std::vector <size_t> Healing_result = {3, 2};
     EXPECT_EQ(HealingCards, Healing_result);
@@ -410,16 +410,16 @@ TEST(Corrected_Index, II_Test)
     EXPECT_EQ(AdditionalCards, Additional_result);
 }
 
-TEST(Making_II_Move, II_Test_1)
+TEST(Making_AI_Move, AI_Test_1)
 {
 
-    Player player_II("II");
-    std::string Name_II = player_II.Get_Name();
-    int Manna_II = player_II.Get_Manna();
-    int Health_II = player_II.Get_Health();
-    std::vector <std::unique_ptr <Card>> II_Hand;
+    Player player_AI("AI");
+    std::string Name_AI = player_AI.Get_Name();
+    int Manna_AI = player_AI.Get_Manna();
+    int Health_AI = player_AI.Get_Health();
+    std::vector <std::unique_ptr <Card>> AI_Hand;
 
-    II_Hand.push_back(std::make_unique<Manna_Card>());//0 (index)
+    AI_Hand.push_back(std::make_unique<Manna_Card>());//0 (index)
 
     Player player("Konst");
     std::string Name_Player = player.Get_Name();
@@ -428,26 +428,26 @@ TEST(Making_II_Move, II_Test_1)
 
     std::vector <std::unique_ptr <Card>> Broken_Deck;
 
-    II ii;
+    AI ai;
 
-    EXPECT_EQ(ii.Making_II_Move(Name_II, Manna_II, Health_II, II_Hand, Name_Player, Health_Player, Player_Hand, Broken_Deck), "all_right");
-    EXPECT_EQ(Manna_II, 15);
-    EXPECT_EQ(Health_II, 25);
+    EXPECT_EQ(ai.Making_AI_Move(Name_AI, Manna_AI, Health_AI, AI_Hand, Name_Player, Health_Player, Player_Hand, Broken_Deck), "all_right");
+    EXPECT_EQ(Manna_AI, 15);
+    EXPECT_EQ(Health_AI, 25);
     EXPECT_EQ(Health_Player, 25);
-    EXPECT_EQ(II_Hand.size(), 0);
+    EXPECT_EQ(AI_Hand.size(), 0);
     EXPECT_EQ(Broken_Deck.size(), 1);
 }
 
-TEST(Making_II_Move, II_Test_2)
+TEST(Making_AI_Move, AI_Test_2)
 {
 
-    Player player_II("II");
-    std::string Name_II = player_II.Get_Name();
-    int Manna_II = player_II.Get_Manna();
-    int Health_II = player_II.Get_Health();
-    std::vector <std::unique_ptr <Card>> II_Hand;
+    Player player_AI("AI");
+    std::string Name_AI = player_AI.Get_Name();
+    int Manna_AI = player_AI.Get_Manna();
+    int Health_AI = player_AI.Get_Health();
+    std::vector <std::unique_ptr <Card>> AI_Hand;
 
-    II_Hand.push_back(std::make_unique<Card_Broken_Deck>());//0 (index)
+    AI_Hand.push_back(std::make_unique<Card_Broken_Deck>());//0 (index)
 
     Player player("Konst");
     std::string Name_Player = player.Get_Name();
@@ -456,25 +456,25 @@ TEST(Making_II_Move, II_Test_2)
 
     std::vector <std::unique_ptr <Card>> Broken_Deck;
 
-    II ii;
+    AI ai;
 
-    EXPECT_EQ(ii.Making_II_Move(Name_II, Manna_II, Health_II, II_Hand, Name_Player, Health_Player, Player_Hand, Broken_Deck), "all_right");
-    EXPECT_EQ(Health_II, 25);
+    EXPECT_EQ(ai.Making_AI_Move(Name_AI, Manna_AI, Health_AI, AI_Hand, Name_Player, Health_Player, Player_Hand, Broken_Deck), "all_right");
+    EXPECT_EQ(Health_AI, 25);
     EXPECT_EQ(Health_Player, 25);
-    EXPECT_EQ(II_Hand.size(), 1);
+    EXPECT_EQ(AI_Hand.size(), 1);
     EXPECT_EQ(Broken_Deck.size(), 0);
 }
 
-TEST(Making_II_Move, II_Test_3)
+TEST(Making_AI_Move, AI_Test_3)
 {
 
-    Player player_II("II");
-    std::string Name_II = player_II.Get_Name();
-    int Manna_II = player_II.Get_Manna();
-    int Health_II = player_II.Get_Health();
-    std::vector <std::unique_ptr <Card>> II_Hand;
+    Player player_AI("AI");
+    std::string Name_AI = player_AI.Get_Name();
+    int Manna_AI = player_AI.Get_Manna();
+    int Health_AI = player_AI.Get_Health();
+    std::vector <std::unique_ptr <Card>> AI_Hand;
 
-    II_Hand.push_back(std::make_unique<Card_Broken_Deck>());//0 (index)
+    AI_Hand.push_back(std::make_unique<Card_Broken_Deck>());//0 (index)
 
     Player player("Konst");
     std::string Name_Player = player.Get_Name();
@@ -484,26 +484,26 @@ TEST(Making_II_Move, II_Test_3)
     std::vector <std::unique_ptr <Card>> Broken_Deck;
     Broken_Deck.push_back(std::make_unique<Healer>());//0 (index)
 
-    II ii;
+    AI ai;
 
-    EXPECT_EQ(ii.Making_II_Move(Name_II, Manna_II, Health_II, II_Hand, Name_Player, Health_Player, Player_Hand, Broken_Deck), "all_right");
-    EXPECT_EQ(Health_II, 30);
+    EXPECT_EQ(ai.Making_AI_Move(Name_AI, Manna_AI, Health_AI, AI_Hand, Name_Player, Health_Player, Player_Hand, Broken_Deck), "all_right");
+    EXPECT_EQ(Health_AI, 30);
     EXPECT_EQ(Health_Player, 24);
-    EXPECT_EQ(II_Hand.size(), 0);
+    EXPECT_EQ(AI_Hand.size(), 0);
     EXPECT_EQ(Broken_Deck.size(), 2);
 }
 
-TEST(Making_II_Move, II_Test_4)
+TEST(Making_AI_Move, AI_Test_4)
 {
 
-    Player player_II("II");
-    std::string Name_II = player_II.Get_Name();
-    int Manna_II = player_II.Get_Manna();
-    int Health_II = player_II.Get_Health();
+    Player player_AI("AI");
+    std::string Name_AI = player_AI.Get_Name();
+    int Manna_AI = player_AI.Get_Manna();
+    int Health_AI = player_AI.Get_Health();
 
-    std::vector <std::unique_ptr <Card>> II_Hand;
+    std::vector <std::unique_ptr <Card>> AI_Hand;
 
-    II_Hand.push_back(std::make_unique<Swap_My_Card>());//0 (index)
+    AI_Hand.push_back(std::make_unique<Swap_My_Card>());//0 (index)
 
     Player player("Konst");
     std::string Name_Player = player.Get_Name();
@@ -513,26 +513,26 @@ TEST(Making_II_Move, II_Test_4)
 
     std::vector <std::unique_ptr <Card>> Broken_Deck;
 
-    II ii;
+    AI ai;
 
-    EXPECT_EQ(ii.Making_II_Move(Name_II, Manna_II, Health_II, II_Hand, Name_Player, Health_Player, Player_Hand, Broken_Deck), "all_right");
-    EXPECT_EQ(Health_II, 25);
+    EXPECT_EQ(ai.Making_AI_Move(Name_AI, Manna_AI, Health_AI, AI_Hand, Name_Player, Health_Player, Player_Hand, Broken_Deck), "all_right");
+    EXPECT_EQ(Health_AI, 25);
     EXPECT_EQ(Health_Player, 22);
-    EXPECT_EQ(II_Hand.size(), 0);
+    EXPECT_EQ(AI_Hand.size(), 0);
     EXPECT_EQ(Broken_Deck.size(), 2);
 }
-TEST(Making_II_Move, II_Test_5)
+TEST(Making_AI_Move, AI_Test_5)
 {
 
-    Player player_II("II");
-    std::string Name_II = player_II.Get_Name();
-    int Manna_II = 4;
-    int Health_II = player_II.Get_Health();
+    Player player_AI("AI");
+    std::string Name_AI = player_AI.Get_Name();
+    int Manna_AI = 4;
+    int Health_AI = player_AI.Get_Health();
 
-    std::vector <std::unique_ptr <Card>> II_Hand;
+    std::vector <std::unique_ptr <Card>> AI_Hand;
 
-    II_Hand.push_back(std::make_unique<Card_Broken_Deck>());//0 (index)
-    II_Hand.push_back(std::make_unique<Knight>());//0 (index)
+    AI_Hand.push_back(std::make_unique<Card_Broken_Deck>());//0 (index)
+    AI_Hand.push_back(std::make_unique<Knight>());//0 (index)
 
     Player player("Konst");
     std::string Name_Player = player.Get_Name();
@@ -542,26 +542,26 @@ TEST(Making_II_Move, II_Test_5)
     std::vector <std::unique_ptr <Card>> Broken_Deck;
     Broken_Deck.push_back(std::make_unique<Manna_Card>());//0 (index)
 
-    II ii;
+    AI ai;
 
-    EXPECT_EQ(ii.Making_II_Move(Name_II, Manna_II, Health_II, II_Hand, Name_Player, Health_Player, Player_Hand, Broken_Deck), "all_right");
-    EXPECT_EQ(Health_II, 25);
+    EXPECT_EQ(ai.Making_AI_Move(Name_AI, Manna_AI, Health_AI, AI_Hand, Name_Player, Health_Player, Player_Hand, Broken_Deck), "all_right");
+    EXPECT_EQ(Health_AI, 25);
     EXPECT_EQ(Health_Player, 18);
-    EXPECT_EQ(II_Hand.size(), 0);
+    EXPECT_EQ(AI_Hand.size(), 0);
     EXPECT_EQ(Broken_Deck.size(), 3);
 }
 
-TEST(Making_II_Move, II_Test_6)
+TEST(Making_AI_Move, AI_Test_6)
 {
 
-    Player player_II("II");
-    std::string Name_II = player_II.Get_Name();
-    int Manna_II = player_II.Get_Manna();
-    int Health_II = player_II.Get_Health();
+    Player player_AI("AI");
+    std::string Name_AI = player_AI.Get_Name();
+    int Manna_AI = player_AI.Get_Manna();
+    int Health_AI = player_AI.Get_Health();
 
-    std::vector <std::unique_ptr <Card>> II_Hand;
+    std::vector <std::unique_ptr <Card>> AI_Hand;
 
-    II_Hand.push_back(std::make_unique<Knight>());//0 (index)
+    AI_Hand.push_back(std::make_unique<Knight>());//0 (index)
 
     Player player("Konst");
     std::string Name_Player = player.Get_Name();
@@ -570,31 +570,31 @@ TEST(Making_II_Move, II_Test_6)
 
     std::vector <std::unique_ptr <Card>> Broken_Deck;
 
-    II ii;
+    AI ai;
 
-    EXPECT_EQ(ii.Making_II_Move(Name_II, Manna_II, Health_II, II_Hand, Name_Player, Health_Player, Player_Hand, Broken_Deck), "Player " + Name_II + " win!");
-    EXPECT_EQ(Health_II, 25);
+    EXPECT_EQ(ai.Making_AI_Move(Name_AI, Manna_AI, Health_AI, AI_Hand, Name_Player, Health_Player, Player_Hand, Broken_Deck), "Player " + Name_AI + " win!");
+    EXPECT_EQ(Health_AI, 25);
     EXPECT_EQ(Health_Player, 0);
-    EXPECT_EQ(II_Hand.size(), 0);
+    EXPECT_EQ(AI_Hand.size(), 0);
     EXPECT_EQ(Broken_Deck.size(), 1);
 }
 //example
-TEST(Making_II_Move, II_Test_7)
+TEST(Making_AI_Move, AI_Test_7)
 {
 
-    Player player_II("II");
-    std::string Name_II = player_II.Get_Name();
-    int Manna_II = player_II.Get_Manna();
-    int Health_II = player_II.Get_Health();
+    Player player_AI("AI");
+    std::string Name_AI = player_AI.Get_Name();
+    int Manna_AI = player_AI.Get_Manna();
+    int Health_AI = player_AI.Get_Health();
 
-    std::vector <std::unique_ptr <Card>> II_Hand;
+    std::vector <std::unique_ptr <Card>> AI_Hand;
 
-    II_Hand.push_back(std::make_unique<Swap_My_Card>());//0 (index)
-    II_Hand.push_back(std::make_unique<Manna_Card>());//1 (index)
-    II_Hand.push_back(std::make_unique<Manna_Card>());//2 (index)
-    II_Hand.push_back(std::make_unique<Knight>());//3 (index)
-    II_Hand.push_back(std::make_unique<Knight>());//4 (index)
-    II_Hand.push_back(std::make_unique<Healing_Spell>());//5 (index)
+    AI_Hand.push_back(std::make_unique<Swap_My_Card>());//0 (index)
+    AI_Hand.push_back(std::make_unique<Manna_Card>());//1 (index)
+    AI_Hand.push_back(std::make_unique<Manna_Card>());//2 (index)
+    AI_Hand.push_back(std::make_unique<Knight>());//3 (index)
+    AI_Hand.push_back(std::make_unique<Knight>());//4 (index)
+    AI_Hand.push_back(std::make_unique<Healing_Spell>());//5 (index)
     Player player("Konst");
     std::string Name_Player = player.Get_Name();
     int Health_Player = player.Get_Health();
@@ -604,13 +604,13 @@ TEST(Making_II_Move, II_Test_7)
 
     std::vector <std::unique_ptr <Card>> Broken_Deck;
 
-    II ii;
+    AI ai;
 
-    EXPECT_EQ(ii.Making_II_Move(Name_II, Manna_II, Health_II, II_Hand, Name_Player, Health_Player, Player_Hand, Broken_Deck), "all_right");
-    EXPECT_EQ(Manna_II, 20);
-    EXPECT_EQ(Health_II, 28);
+    EXPECT_EQ(ai.Making_AI_Move(Name_AI, Manna_AI, Health_AI, AI_Hand, Name_Player, Health_Player, Player_Hand, Broken_Deck), "all_right");
+    EXPECT_EQ(Manna_AI, 20);
+    EXPECT_EQ(Health_AI, 28);
     EXPECT_EQ(Health_Player, 4);
-    EXPECT_EQ(II_Hand.size(), 0);
+    EXPECT_EQ(AI_Hand.size(), 0);
     EXPECT_EQ(Broken_Deck.size(), 7);
 }
 

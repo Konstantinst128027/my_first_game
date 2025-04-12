@@ -1,10 +1,10 @@
 /* Berezkin Konstantin Evgenievich
 ./main st128027@student.spbu.ru*/
-#include "II.h"
+#include "AI.h"
 
-II::II() {}
+AI::AI() {}
 //this function returns a vector of the Healing_Card indexes in descending order of their Healng (that is, the index of the card with the most Healing goes first)
-std::vector <size_t> II::Choosing_Healing_Card(std::vector <std::unique_ptr<Card>>& Hand)
+std::vector <size_t> AI::Choosing_Healing_Card(std::vector <std::unique_ptr<Card>>& Hand)
 {
 
     std::vector <size_t> Choosing_Healing_Cards;
@@ -42,7 +42,7 @@ std::vector <size_t> II::Choosing_Healing_Card(std::vector <std::unique_ptr<Card
 }
 
 //this function returns a vector of the Damage_Card indexes in descending order of their Damage (that is, the index of the card with the most Damage goes first)
-std::vector <size_t> II::Choosing_Damage_Card(std::vector <std::unique_ptr<Card>>& Hand)
+std::vector <size_t> AI::Choosing_Damage_Card(std::vector <std::unique_ptr<Card>>& Hand)
 {
 
     std::vector <size_t> Choosing_Damage_Cards;
@@ -80,7 +80,7 @@ std::vector <size_t> II::Choosing_Damage_Card(std::vector <std::unique_ptr<Card>
     return Choosing_Damage_Cards;
 }
 //this function returns a vector of the Manna_Card indexes.
-std::vector <size_t> II::Choosing_Manna_Card(std::vector <std::unique_ptr<Card>>& Hand)
+std::vector <size_t> AI::Choosing_Manna_Card(std::vector <std::unique_ptr<Card>>& Hand)
 {
 
     std::vector <size_t> Choosing_Manna_Cards;
@@ -105,7 +105,7 @@ std::vector <size_t> II::Choosing_Manna_Card(std::vector <std::unique_ptr<Card>>
     return Choosing_Manna_Cards;
 }
 //this function returns a vector of the Additional_Card indexes (without Manna_Card)
-std::vector <size_t> II::Choosing_Additional_Card(std::vector <std::unique_ptr<Card>>& Hand)
+std::vector <size_t> AI::Choosing_Additional_Card(std::vector <std::unique_ptr<Card>>& Hand)
 {
 
     std::vector <size_t> Choosing_Additional_Cards;
@@ -131,7 +131,7 @@ std::vector <size_t> II::Choosing_Additional_Card(std::vector <std::unique_ptr<C
     return Choosing_Additional_Cards;
 }
 //this function shows how Swap_My_Card works For AI. Its implementation shows a smart card selection.
-void II::The_Swap_My_Card_II(std::vector <std::unique_ptr<Card>>& Hand_1, std::vector <std::unique_ptr<Card>>& Hand_2, std::vector <size_t>& HealingCards, std::vector <size_t>& DamageCards, std::vector <size_t>& MannaCards, std::vector <size_t>& AdditionalCards, int& Health_1)
+void AI::The_Swap_My_Card_AI(std::vector <std::unique_ptr<Card>>& Hand_1, std::vector <std::unique_ptr<Card>>& Hand_2, std::vector <size_t>& HealingCards, std::vector <size_t>& DamageCards, std::vector <size_t>& MannaCards, std::vector <size_t>& AdditionalCards, int& Health_1)
 {
 
     size_t index_of_card;
@@ -178,7 +178,7 @@ void II::The_Swap_My_Card_II(std::vector <std::unique_ptr<Card>>& Hand_1, std::v
 
 }
 //this function shows how Card_Broken_Deck works For AI. Its implementation shows a smart card selection.
-void II::The_Card_Broken_Deck_II(std::vector <std::unique_ptr<Card>>& Hand, std::vector <std::unique_ptr<Card>>& Broken_Deck, std::vector <size_t>& HealingCards, std::vector <size_t>& DamageCards, std::vector <size_t>& MannaCards, std::vector <size_t>& AdditionalCards, int& Health_1)
+void AI::The_Card_Broken_Deck_AI(std::vector <std::unique_ptr<Card>>& Hand, std::vector <std::unique_ptr<Card>>& Broken_Deck, std::vector <size_t>& HealingCards, std::vector <size_t>& DamageCards, std::vector <size_t>& MannaCards, std::vector <size_t>& AdditionalCards, int& Health_1)
 {
 
     size_t index_of_card;
@@ -224,7 +224,7 @@ void II::The_Card_Broken_Deck_II(std::vector <std::unique_ptr<Card>>& Hand, std:
     std::cout << "Card was used!" << std::endl;
 }
 //This function adjusts the indexes of the maps after using one of them
-void II::Corrected_Index(std::vector <size_t>& HealingCards, std::vector <size_t>& DamageCards, std::vector <size_t>& MannaCards, std::vector <size_t>& AdditionalCards, std::vector <size_t>& ThenAdditionalHealingCards, std::vector <size_t>& ThenAdditionalDamageCards, size_t& Index_Of_Card)
+void AI::Corrected_Index(std::vector <size_t>& HealingCards, std::vector <size_t>& DamageCards, std::vector <size_t>& MannaCards, std::vector <size_t>& AdditionalCards, std::vector <size_t>& ThenAdditionalHealingCards, std::vector <size_t>& ThenAdditionalDamageCards, size_t& Index_Of_Card)
 {
 
     for (size_t i = 0; i < MannaCards.size(); i++)
@@ -278,12 +278,12 @@ void II::Corrected_Index(std::vector <size_t>& HealingCards, std::vector <size_t
 
 }
 //this function makes the AI move. Here I consider all cases so that there are no uncertainties.
-std::string II::Making_II_Move(std::string& Name_1, int& Manna_II, int& Health_1, std::vector <std::unique_ptr<Card>>& Hand_1, std::string& Name_2, int& Health_2,  std::vector<std::unique_ptr<Card>>& Hand_2, std::vector<std::unique_ptr<Card>>& Broken_Deck)
+std::string AI::Making_AI_Move(std::string& Name_1, int& Manna_AI, int& Health_1, std::vector <std::unique_ptr<Card>>& Hand_1, std::string& Name_2, int& Health_2,  std::vector<std::unique_ptr<Card>>& Hand_2, std::vector<std::unique_ptr<Card>>& Broken_Deck)
 {
 
     std::cout << "The " << Name_1 << " player is walking" <<std::endl;
 
-    int Manna_1 = Manna_II;
+    int Manna_1 = Manna_AI;
 
     std::string situation = "all_right";
 
@@ -330,7 +330,7 @@ std::string II::Making_II_Move(std::string& Name_1, int& Manna_II, int& Health_1
 
                     std::cout << Name_2 << " health: " << Health_2 << std::endl;
 
-                    Manna_II += MannaCard->Get_Plus_Manna();
+                    Manna_AI += MannaCard->Get_Plus_Manna();
 
                     Broken_Deck.push_back(std::move(Hand_1[index_of_card]));
 
@@ -506,7 +506,7 @@ std::string II::Making_II_Move(std::string& Name_1, int& Manna_II, int& Health_1
 
                         AdditionalCard->Card_Capability();
 
-                        The_Card_Broken_Deck_II(Hand_1, Broken_Deck, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
+                        The_Card_Broken_Deck_AI(Hand_1, Broken_Deck, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
 
                         AdditionalCard->Additional_Card_Play(Manna_1);
 
@@ -532,7 +532,7 @@ std::string II::Making_II_Move(std::string& Name_1, int& Manna_II, int& Health_1
 
                     AdditionalCard->Card_Capability();
 
-                    The_Swap_My_Card_II(Hand_1, Hand_2, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
+                    The_Swap_My_Card_AI(Hand_1, Hand_2, HealingCards, DamageCards, MannaCards, AdditionalCards, Health_1);
 
                     AdditionalCard->Additional_Card_Play(Manna_1);
 
@@ -745,8 +745,8 @@ std::string II::Making_II_Move(std::string& Name_1, int& Manna_II, int& Health_1
             }
         }
     }
-    std::cout << "II turn is complete!" << std::endl;
+    std::cout << "AI turn is complete!" << std::endl;
     return situation;
 }
 
-II::~II() {}
+AI::~AI() {}

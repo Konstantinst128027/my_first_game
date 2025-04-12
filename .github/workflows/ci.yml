@@ -28,7 +28,8 @@ jobs:
       - name: Build and run tests
         run: |
           make tests
-
+          ./tests
       - name: Clean all
         run: |
           make cleanall
+
